@@ -1,29 +1,36 @@
-"use client"
 
-import type React from "react"
+"use client";
 
-import { useState } from "react"
-import { UseCaseCard } from "./use-case-card"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { useState } from "react";
+import { UseCaseCard } from "./use-case-card";
+import { cn } from "@/lib/utils";
 
-export type UseCaseCategory = "Featured" | "Research" | "Life" | "Data Analysis" | "Education" | "Productivity" | "WTF"
+export type UseCaseCategory =
+  | "Featured"
+  | "Research"
+  | "Life"
+  | "Data Analysis"
+  | "Education"
+  | "Productivity"
+  | "WTF";
 
 export interface UseCase {
-  id: string
-  title: string
-  description: string
-  category: UseCaseCategory[]
-  icon: React.ReactNode
-  imageSrc: string
+  id: string;
+  title: string;
+  description: string;
+  category: UseCaseCategory[];
+  icon: React.ReactNode;
+  imageSrc: string;
 }
 
 interface UseCaseGalleryProps {
-  useCases: UseCase[]
-  className?: string
+  useCases: UseCase[];
+  className?: string;
 }
 
-export default function UseCaseGallery({ useCases, className }: UseCaseGalleryProps) {
-  const [activeCategory, setActiveCategory] = useState<UseCaseCategory>("Featured")
+const UseCaseGallery: React.FC<UseCaseGalleryProps> = ({ useCases, className }) => {
+  const [activeCategory, setActiveCategory] = useState<UseCaseCategory>("Featured");
 
   const categories: UseCaseCategory[] = [
     "Featured",
@@ -33,11 +40,13 @@ export default function UseCaseGallery({ useCases, className }: UseCaseGalleryPr
     "Education",
     "Productivity",
     "WTF",
-  ]
+  ];
 
   const filteredUseCases = useCases.filter((useCase) =>
-    activeCategory === "Featured" ? useCase.category.includes("Featured") : useCase.category.includes(activeCategory),
-  )
+    activeCategory === "Featured"
+      ? useCase.category.includes("Featured")
+      : useCase.category.includes(activeCategory),
+  );
 
   return (
     <div className={cn("w-full max-w-6xl mx-auto px-4 py-8", className)}>
@@ -69,6 +78,7 @@ export default function UseCaseGallery({ useCases, className }: UseCaseGalleryPr
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
+export default UseCaseGallery;

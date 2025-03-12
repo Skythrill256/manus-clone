@@ -12,7 +12,7 @@ export default function IntroVideo() {
       {!isPlaying ? (
         <>
           <Image
-            src="/public/images/intro-video-thumbnail.webp"
+            src="https://files.manuscdn.com/webapp/_next/static/media/indexVideo.d4cf4280.webp"
             alt="Manus Demo"
             width={1200}
             height={675}

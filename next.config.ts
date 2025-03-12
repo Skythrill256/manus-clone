@@ -3,7 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
+    domains: ['files.manuscdn.com'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
+
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
@@ -11,9 +15,14 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol:"https",
+        protocol: "https",
         hostname: 'unsplash.com'
 
+      },
+      {
+        protocol: 'https',
+        hostname: 'files.manuscdn.com',
+        pathname: '/**',
       },
     ],
   },
